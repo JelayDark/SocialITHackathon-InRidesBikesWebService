@@ -34,11 +34,14 @@ export default {
   height: 490px;
   li {
     display: block;
-    margin: 5px;
-    padding: 5px;
-    background-color: #eee;
+    margin: 1px;
+    padding: 8px 8px 8px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    background-color: rgba(40, 57, 101, 0.7);
     &:hover {
-      background-color: #eee000;
+      background-color: rgba(40, 57, 101, 0.9);
       cursor: pointer;
     }
   }

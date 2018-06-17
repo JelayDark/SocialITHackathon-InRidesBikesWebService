@@ -50,7 +50,6 @@ export default {
 
 <style scoped>
 .top-part {
-  margin-bottom: 40px;
 }
 
 .list-wrapper {
@@ -65,11 +64,11 @@ export default {
 .main-wrapper {
   width: 70%;
   margin-left: 40px;
-  float: left;
+  float: right;
 }
 
 .home-map-block {
-
+  padding: 40px;
 }
 
 .clearfix:after {
