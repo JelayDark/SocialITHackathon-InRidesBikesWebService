@@ -32,6 +32,10 @@
 </template>
 
 <script>
+import io from 'socket.io-client'
+import axios from 'axios'
+import qs from 'qs'
+
 export default {
   name: 'map',
   data() {
@@ -41,11 +45,15 @@ export default {
           center: { lat: 45.508, lng: -73.587 },
           markers: [],
           places: [],
-          currentPlace: null
+          currentPlace: null,
+          socket: io('localhost:3000')
       };
   },
   mounted() {
       this.geolocate();
+      this.socket.on('newMarker', function () {
+          this.markers.push(data);
+      });
   },
   created() {
     // let recaptchaScript = document.createElement('script')
@@ -55,20 +63,40 @@ export default {
     // this.check()
   },
   methods: {
+      getMarkers: function() {
+          axios.post('http://localhost:3000/ride/getrides')
+              .then((res) => {
+                  console.log(`catch response: ${res.data}`)
+              })
+              .catch((e) => {
+                  console.log(`ERROR: ${e}`)
+                  alert('Something went wrong! Please try again!')
+              })
+      },
       // receives a place object via the autocomplete component
-      setPlace(place) {
+      setPlace: function(place) {
           this.currentPlace = place;
       },
-      addMarker() {
+      addMarker: function() {
           if (this.currentPlace) {
               const marker = {
                   lat: this.currentPlace.geometry.location.lat(),
                   lng: this.currentPlace.geometry.location.lng()
-              };
-              this.markers.push({ position: marker });
-              this.places.push(this.currentPlace);
-              this.center = marker;
-              this.currentPlace = null;
+              }
+              this.markers.push({ position: marker })
+              this.places.push(this.currentPlace)
+              this.center = marker
+              this.currentPlace = null
+              const str = qs.stringify({'startMarkerCoordinateX': marker.lat, 'startMarkerCoordinateY': marker.lng})
+              axios.post('http://localhost:3000/ride/addride', str)
+                  .then((res) => {
+                      console.log(`catch response: ${res.data}`)
+                  })
+                  .catch((e) => {
+                      console.log(`ERROR: ${e}`)
+                      alert('Something went wrong! Please try again!')
+                  })
+
           }
       },
       geolocate: function() {
