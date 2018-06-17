@@ -7,7 +7,10 @@ const User = new mongoose.Schema({
     secondName: String,
     facebook: String,
     twitter: String,
-    telegram: String
+    telegram: String,
+    gender: String,
+    age: { type: Number, min: 10, max: 100 },
+    password: String
 });
 
 module.exports = mongoose.model('User', User);
