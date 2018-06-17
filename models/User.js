@@ -4,7 +4,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const bcrypt = require('bcrypt');
 
 const User = new mongoose.Schema({
-    email: String,
+    username: String,  // email, cos passport
     firstName: String,
     secondName: String,
     facebook: String,
