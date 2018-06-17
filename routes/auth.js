@@ -29,7 +29,7 @@ router.post('/login', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-    User.findOne({ email: req.body.email }, function(err, account) {
+    User.findOne({ username: req.body.username }, function(err, account) {
         if (err) {
             return res.status(400).json({
                 message: 'Something is not right',
@@ -42,7 +42,7 @@ router.post('/register', function(req, res) {
             // return;
         } else {
             const newUser = new User();
-            newUser.email = req.body.email;
+            newUser.username = req.body.username;
             newUser.password = newUser.generateHash(req.body.password);
             newUser.save(function(err, user) {
                 console.log(user);
