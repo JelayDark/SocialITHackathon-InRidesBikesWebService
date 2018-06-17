@@ -1,6 +1,8 @@
 <template>
   <div>
-    <!--<Header/>-->
+    <div class="top-part">
+      <MainHeader/>
+    </div>
     <div class="home-map-block">
       <div class="list-wrapper">
         <locs-list/>
@@ -15,7 +17,7 @@
 </template>
 
 <script>
-import Header from './Header'
+import MainHeader from './MainHeader'
 import MainPart from './HomePage/MainPart'
 import LocsList from './HomePage/LocsList'
 
@@ -39,7 +41,7 @@ export default {
     console.log(`items: ${this.items}`)
   },
   components: {
-    Header,
+    MainHeader,
     MainPart,
     LocsList
   }
@@ -47,6 +49,10 @@ export default {
 </script>
 
 <style scoped>
+.top-part {
+  margin-bottom: 40px;
+}
+
 .list-wrapper {
   width: 20%;
   float: left;
@@ -54,6 +60,7 @@ export default {
   max-height: 200px;
   overflow-y: auto;
 }
+
 .main-wrapper {
   width: 70%;
   margin-left: 40px;

@@ -40,7 +40,7 @@
               <label for="check"><span class="icon"></span> Keep me Signed in</label>
             </div>
             <div class="group">
-              <input type="submit" class="button" value="Sign In">
+              <input type="submit" class="button" value="Sign In" @click.prevent="sendData">
             </div>
             <div class="hr"></div>
             <!--<div class="foot-lnk">-->
@@ -89,11 +89,11 @@ export default {
   name: 'loginForm',
   data: () => {
     return {
-      username: '',
-      userpass: '',
-      response: '',
-      userpasscheck: '',
-      usermail: ''
+      username: 'aaa',
+      userpass: 'aaa',
+      response: 'aaa',
+      userpasscheck: 'aaa',
+      usermail: 'aaa'
     }
   },
   methods: {
@@ -101,7 +101,11 @@ export default {
       const str = qs.stringify({'username': this.username, 'password': this.userpass})
       console.log(`uName: ${this.username}`)
       console.log(`uPass: ${this.userpass}`)
-      axios.post('localhost:3000/auth/login', str)
+      axios.post('https://localhost:3000/auth/login', {
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded'
+        }
+      })
         .then((res) => {
           this.response = res
         })
@@ -118,7 +122,9 @@ export default {
       console.log(`str: ${str}`)
       axios.post('http://localhost:3000/auth/register', {
         body: str,
-        header: 'Access-Control-Allow-Origin'
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded'
+        }
       })
         .then((res) => {
           this.response = res
