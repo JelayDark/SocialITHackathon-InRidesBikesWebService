@@ -1,5 +1,13 @@
 <template>
     <header>
+      <div class="btns-wrapper">
+        <button>
+          Sign In
+        </button>
+        <button>
+          Sign Up
+        </button>
+      </div>
       <img src="../assets/logo.png" alt="logo">
     </header>
 </template>
@@ -15,13 +23,13 @@ export default {
 header {
   width: 100%;
   position: relative;
-  background-color: #fff;
+  background-color: #27253f;
   -webkit-box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
   -moz-box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
   box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
   img {
     margin: 0 auto;
-    height: 60px;
+    height: 80px;
   }
 }
 </style>

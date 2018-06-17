@@ -27,8 +27,8 @@ export default {
   },
   data: () => {
     return {
-      cocoa: 'hi',
-      items: ['aa', 'dd', 'ff0', 'ffds', 'dsfdf']
+      items: ['aa', 'dd', 'ff0', 'ffds', 'dsfdf'],
+      isLogged: false
 
     }
   },
@@ -36,9 +36,13 @@ export default {
 
   },
   created: () => {
-    console.log('created')
-    console.log(`cocoa: ${this.cocoa}`)
-    console.log(`items: ${this.items}`)
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.isLogged = true
+    } else {
+      this.isLogged = false
+      // window.location.href = '/login';
+    }
   },
   components: {
     MainHeader,
