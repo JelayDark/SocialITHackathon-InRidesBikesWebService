@@ -29,11 +29,11 @@
           <div class="sign-in-htm">
             <div class="group">
               <label for="user" class="label">Username</label>
-              <input id="user" type="text" class="input">
+              <input id="user" type="text" class="input" v-model="username">
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
-              <input id="pass" type="password" class="input" data-type="password">
+              <input id="pass" type="password" class="input" data-type="password" v-model="userpass">
             </div>
             <div class="group">
               <input id="check" type="checkbox" class="check" checked>
@@ -50,22 +50,22 @@
           <div class="sign-up-htm">
             <div class="group">
               <label for="user" class="label">Username</label>
-              <input id="user" type="text" class="input">
+              <input id="user" type="text" class="input" v-model="username">
             </div>
             <div class="group">
               <label for="pass" class="label">Password</label>
-              <input id="pass" type="password" class="input" data-type="password">
+              <input id="pass" type="password" class="input" data-type="password" v-model="userpass">
             </div>
             <div class="group">
               <label for="pass" class="label">Repeat Password</label>
-              <input id="pass" type="password" class="input" data-type="password">
+              <input id="pass" type="password" class="input" data-type="password" v-model="userpasscheck">
             </div>
             <div class="group">
               <label for="pass" class="label">Email Address</label>
-              <input id="pass" type="text" class="input">
+              <input id="pass" type="text" class="input" v-model="usermail">
             </div>
             <div class="group">
-              <input type="submit" class="button" value="Sign Up">
+              <input type="submit" class="button" value="Sign Up" @click.prevent="goRegister">
             </div>
             <div class="hr"></div>
             <div class="foot-lnk">
@@ -91,7 +91,9 @@ export default {
     return {
       username: '',
       userpass: '',
-      response: ''
+      response: '',
+      userpasscheck: '',
+      usermail: ''
     }
   },
   methods: {
@@ -99,7 +101,21 @@ export default {
       const str = qs.stringify({'username': this.username, 'password': this.userpass})
       console.log(`uName: ${this.username}`)
       console.log(`uPass: ${this.userpass}`)
-      axios.post('http://192.168.0.76:3000/auth/login', str)
+      axios.post('localhost:3000/auth/login', str)
+        .then((res) => {
+          this.response = res
+        })
+        .catch((e) => {
+          this.response = e
+        })
+    },
+    goRegister () {
+      const str = qs.stringify({'username': this.username, 'password': this.userpass})
+      console.log(`username: ${this.username}`)
+      console.log(`userpass: ${this.userpass}`)
+      console.log(`userpasscheck: ${this.userpasscheck}`)
+      console.log(`usermail: ${this.usermail}`)
+      axios.post('http://localhost:3000/auth/register', str)
         .then((res) => {
           this.response = res
         })

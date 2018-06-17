@@ -399,7 +399,7 @@ export default {
     left:50%;
     width:70px;
     height:50px;
-    margin-left:-35px;
+    margin-left:-48px;
     position:absolute;
   }
   .helmet:before,
