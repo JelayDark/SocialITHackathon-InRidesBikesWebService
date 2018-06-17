@@ -13,7 +13,7 @@
     </div>
     <br>
     <gmap-map
-      :center="{lat:10, lng:10}"
+      :center="{lat:50.439178, lng:30.539135}"
       :zoom="7"
       map-type-id="terrain"
       style="width:100%;  height: 400px;"

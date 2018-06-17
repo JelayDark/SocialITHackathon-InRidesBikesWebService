@@ -27,10 +27,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/users', passport.authenticate('jwt', {session: false}), usersRouter);
-
 // passport config
 /*const Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
@@ -43,6 +39,18 @@ mongoose.Promise = bluebird;
 mongoose.connect('mongodb://127.0.0.1/shell')
     .then(()=> { console.log(`Succesfully Connected to the Mongodb Database  at URL : mongodb://127.0.0.1/shell`) })
     .catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1/shell`) });
+
+app.use(function(req, res, next) {
+    // http://192.168.0.97:8080
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+});
+
+app.use('/', indexRouter);
+app.use('/auth', authRouter);
+app.use('/users', passport.authenticate('jwt', {session: false}), usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,14 +66,6 @@ app.use(function(err, req, res) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-});
-
-app.use(function(req, res, next) {
-    // http://192.168.0.97:8080
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    next();
 });
 
 module.exports = app;

@@ -89,8 +89,8 @@ export default {
   name: 'loginForm',
   data: () => {
     return {
-      username: 'aaa',
-      userpass: 'aaa',
+      username: 'hero1@mail.com',
+      userpass: 'qwerty',
       response: 'aaa',
       userpasscheck: 'aaa',
       usermail: 'aaa'
@@ -101,17 +101,13 @@ export default {
       const str = qs.stringify({'username': this.username, 'password': this.userpass})
       console.log(`uName: ${this.username}`)
       console.log(`uPass: ${this.userpass}`)
-      axios.post('https://localhost:3000/auth/login', {
-        headers: {
-          'Content-type': 'application/x-www-form-urlencoded'
-        }
-      })
-        .then((res) => {
-          this.response = res
-        })
-        .catch((e) => {
-          this.response = e
-        })
+      axios.post('http://localhost:3000/auth/login', str)
+          .then((res) => {
+              this.response = res
+          })
+          .catch((e) => {
+              this.response = e
+          })
     },
     goRegister () {
       const str = qs.stringify({'username': this.username, 'password': this.userpass})
