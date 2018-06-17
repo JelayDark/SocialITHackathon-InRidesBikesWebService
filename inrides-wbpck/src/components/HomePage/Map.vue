@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
   <div id="bike-map">
-    <div>
+    <!--<div>
       <h2>Search and add a start point</h2>
       <label>
         <gmap-autocomplete
@@ -11,8 +11,8 @@
       </label>
       <br/>
 
-    </div>
-    <br>
+    </div>!-->
+
     <gmap-map
       :center="{lat:50.439178, lng:30.539135}"
       :zoom="7"
@@ -124,6 +124,7 @@ export default {
   width: 80%;
   height: 500px;
   margin: 0 auto;
+  padding:0;
   background-color: red;
 }
 </style>
