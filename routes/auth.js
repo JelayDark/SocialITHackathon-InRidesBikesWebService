@@ -44,8 +44,15 @@ router.post('/register', function(req, res) {
             const newUser = new User();
             newUser.username = req.body.username;
             newUser.password = newUser.generateHash(req.body.password);
+            newUser.facebook = req.body.facebook;
+            newUser.twitter = req.body.twitter;
+            newUser.telegram = req.body.telegram;
+            newUser.gender = req.body.gender;
+            newUser.age = req.body.age;
+            newUser.firstName = req.body.firstName;
+            newUser.secondName = req.body.secondName;
+
             newUser.save(function(err, user) {
-                console.log(user);
                 req.login(user, function(err) {
                     if (err) {
                         return res.json(err);
@@ -69,5 +76,6 @@ router.post('/jwt', function(req, res) {
             res.json({success: 'You are authenticated with JWT!', user: user})
         })(req, res);
 });
+
 
 module.exports = router;

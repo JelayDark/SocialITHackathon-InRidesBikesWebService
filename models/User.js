@@ -25,4 +25,11 @@ User.methods.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
 
+User.methods.getUserInfo = function () {
+    const user = this;
+    delete user._id;
+    delete user.password;
+    return user;
+};
+
 module.exports = mongoose.model('User', User);
