@@ -12,6 +12,9 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 
+const chatRouter = require('./routes/chat');
+const rideRouter = require('./routes/ride');
+
 const app = express();
 
 app.use(logger('dev'));
@@ -51,6 +54,8 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', passport.authenticate('jwt', {session: false}), usersRouter);
+app.use('/ride', rideRouter);
+app.use('/chat', chatRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
