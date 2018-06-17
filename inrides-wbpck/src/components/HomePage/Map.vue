@@ -46,7 +46,8 @@ export default {
           markers: [],
           places: [],
           currentPlace: null,
-          socket: io('localhost:3000')
+          socket: io('localhost:3000'),
+          token: ''
       };
   },
   mounted() {
@@ -54,8 +55,10 @@ export default {
       this.socket.on('newMarker', function () {
           this.markers.push(data);
       });
+      this.token = localStorage.getItem('token') || '';
   },
   created() {
+
     // let recaptchaScript = document.createElement('script')
     // const initMap = this.initMap()
     // recaptchaScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAVh_KeFFlOxLQNxJ8SA3qYLgerKX2ZosY&callback=initMap')
@@ -88,7 +91,12 @@ export default {
               this.center = marker
               this.currentPlace = null
               const str = qs.stringify({'startMarkerCoordinateX': marker.lat, 'startMarkerCoordinateY': marker.lng})
-              axios.post('http://localhost:3000/ride/addride', str)
+              console.log(`ya token: ${this.token}`)
+              axios.post('http://localhost:3000/ride/addride', str, {
+                headers: {
+                  Authorization: 'Bearer '+JSON.stringify(this.token)
+                }
+              })
                   .then((res) => {
                       console.log(`catch response: ${res.data}`)
                   })
