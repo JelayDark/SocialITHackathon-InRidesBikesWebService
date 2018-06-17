@@ -91,43 +91,47 @@ export default {
     return {
       username: 'hero1@mail.com',
       userpass: 'qwerty',
-      response: 'aaa',
       userpasscheck: 'aaa',
       usermail: 'aaa'
     }
   },
   methods: {
     sendData () {
-      const str = qs.stringify({'username': this.username, 'password': this.userpass})
-      console.log(`uName: ${this.username}`)
-      console.log(`uPass: ${this.userpass}`)
-      axios.post('http://localhost:3000/auth/login', str)
+      console.log(`this.username this.userpass: ${this.username}, ${this.userpass}`);
+      if(!!this.username && !!this.userpass) {
+        const str = qs.stringify({'username': this.username, 'password': this.userpass})
+        console.log(`uName: ${this.username}`)
+        console.log(`uPass: ${this.userpass}`)
+        axios.post('http://localhost:3000/auth/login', str)
           .then((res) => {
-              this.response = res
+            localStorage.setItem('token', res.data.token)
           })
           .catch((e) => {
-              this.response = e
+            console.log(`ERROR: ${e}`)
+            alert('Something went wrong! Please try again!')
           })
+      }
+    },
+    checkData() {
+      return !!this.userpasscheck*this.userpasscheck*(this.userpasscheck === this.userpass) * !!this.username * !!this.usermail
     },
     goRegister () {
-      const str = qs.stringify({'username': this.username, 'password': this.userpass})
-      console.log(`username: ${this.username}`)
-      console.log(`userpass: ${this.userpass}`)
-      console.log(`userpasscheck: ${this.userpasscheck}`)
-      console.log(`usermail: ${this.usermail}`)
-      console.log(`str: ${str}`)
-      axios.post('http://localhost:3000/auth/register', {
-        body: str,
-        headers: {
-          'Content-type': 'application/x-www-form-urlencoded'
-        }
-      })
-        .then((res) => {
-          this.response = res
-        })
-        .catch((e) => {
-          this.response = e
-        })
+      if(this.checkData()) {
+        const str = qs.stringify({'username': this.username, 'password': this.userpass})
+        console.log(`username: ${this.username}`)
+        console.log(`userpass: ${this.userpass}`)
+        console.log(`userpasscheck: ${this.userpasscheck}`)
+        console.log(`usermail: ${this.usermail}`)
+        console.log(`str: ${str}`)
+        axios.post('http://localhost:3000/auth/register', str)
+          .then((res) => {
+            console.log(`catch response: ${res.data}`)
+          })
+          .catch((e) => {
+            console.log(`ERROR: ${e}`)
+            alert('Something went wrong! Please try again!')
+          })
+      }
     }
   },
   components: {
