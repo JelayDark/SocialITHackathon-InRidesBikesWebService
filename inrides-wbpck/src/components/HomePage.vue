@@ -2,12 +2,12 @@
   <div>
     <Header/>
     <div class="home-map-block">
-      <ul>
-        <li v-for="item in items">
-          {{ item }}
-        </li>
-      </ul>
-      <main-part/>
+      <div class="list-wrapper">
+        <locs-list/>
+      </div>
+      <div class="main-wrapper">
+        <main-part/>
+      </div>
     </div>
 
   </div>
@@ -17,6 +17,7 @@
 <script>
 import Header from './Header'
 import MainPart from './HomePage/MainPart'
+import LocsList from './HomePage/LocsList'
 
 export default {
   name: 'HomePage',
@@ -25,7 +26,7 @@ export default {
   data: () => {
     return {
       cocoa: 'hi',
-      items: ['aa', 'dd']
+      items: ['aa', 'dd', 'ff0', 'ffds', 'dsfdf']
 
     }
   },
@@ -39,11 +40,25 @@ export default {
   },
   components: {
     Header,
-    MainPart
+    MainPart,
+    LocsList
   }
 }
 </script>
 
 <style scoped>
+.list-wrapper {
+  width: 20%;
+  float: left;
+  border: 1px solid black;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.main-wrapper {
+  width: 70%;
+  margin-left: 40px;
+  float: left;
+}
+
 
 </style>
