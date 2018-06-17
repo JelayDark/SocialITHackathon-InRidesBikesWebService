@@ -350,10 +350,10 @@ export default {
     height:80px;
     width:inherit;
   }
-  .leg.left{animation:leg-l 1.2s linear infinite}
-  .leg.right{right:0;animation:leg-r 1.2s linear infinite}
-  .leg.left:before{background-color:#5596aa}
-  .leg.right:before{background-color:#61b2be}
+  .leg.left{animation:leg-l 1.2s linear infinite;}
+  .leg.right{right:0;animation:leg-r 1.2s linear infinite;}
+  .leg.left:before{background-color:#5596aa;margin-left: -10px;}
+  .leg.right:before{background-color:#61b2be;margin-left: -10px;}
   .legs .leg:after{
     left:50%;
     bottom:0;
@@ -369,12 +369,14 @@ export default {
     position:absolute;
     background-color:#fff;
     border-radius:50% 50% 0 0;
+    margin-left: -10px;
   }
   .legs .leg>i:before{
     height:5px;
     bottom:70px;
     width:inherit;
     background-color:inherit;
+    margin-left: -10px;
   }
   @keyframes leg-l{
     0%,100%{top:15px}
@@ -409,8 +411,8 @@ export default {
   .helmet .dtl{width:inherit;display:block}
   .helmet .dtl:before,
   .helmet .dtl:after{top:10px;width:16px;height:6px;background-color:#49829a}
-  .helmet .dtl:before{left:10px;border-radius:6px 6px 0 0;border-top-right-radius:14px 8px}
-  .helmet .dtl:after{right:10px;border-radius:6px 6px 0 0;border-top-left-radius:14px 8px}
+  .helmet .dtl:before{left:40px;border-radius:6px 6px 0 0;border-top-right-radius:14px 8px}
+  .helmet .dtl:after{right:-25px;border-radius:6px 6px 0 0;border-top-left-radius:14px 8px}
 
   .face{
     width:inherit;
@@ -501,9 +503,9 @@ export default {
     border-radius:15px 15px 0 0;
   }
   .main .hand.left .top{animation:hand-lt 1.2s linear infinite}
-  .main .hand.left .bottom{transform-origin:80% 100%;animation:hand-lb 1.2s linear infinite}
+  .main .hand.left .bottom{transform-origin:80% 100%;animation:hand-lb 1.2s linear infinite;margin-left: -11px;}
   .main .hand.right .top{animation:hand-rt 1.2s linear infinite}
-  .main .hand.right .bottom{transform-origin:80% 100%;animation:hand-rb 1.2s linear infinite}
+  .main .hand.right .bottom{transform-origin:80% 100%;animation:hand-rb 1.2s linear infinite;margin-left: -11px;}
   @keyframes hand-lt{
     0%,100%{transform:translate(-4px,8px) rotate(45deg)}
     50%{transform:translate(8px,-4px) rotate(48deg)}
