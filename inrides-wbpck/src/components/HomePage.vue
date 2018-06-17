@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header/>
+    <!--<Header/>-->
     <div class="home-map-block">
       <div class="list-wrapper">
         <locs-list/>
