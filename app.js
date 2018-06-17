@@ -29,7 +29,8 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/users', passport.authenticate('jwt', {session: false}), usersRouter);
+app.use('/user', passport.authenticate('jwt', {session: false}), usersRouter);
+
 
 // passport config
 /*const Account = require('./models/account');
