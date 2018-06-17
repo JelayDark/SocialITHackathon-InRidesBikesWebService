@@ -115,7 +115,11 @@ export default {
       console.log(`userpass: ${this.userpass}`)
       console.log(`userpasscheck: ${this.userpasscheck}`)
       console.log(`usermail: ${this.usermail}`)
-      axios.post('http://localhost:3000/auth/register', str)
+      console.log(`str: ${str}`)
+      axios.post('http://localhost:3000/auth/register', {
+        body: str,
+        header: 'Access-Control-Allow-Origin'
+      })
         .then((res) => {
           this.response = res
         })

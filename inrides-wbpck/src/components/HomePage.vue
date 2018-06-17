@@ -7,6 +7,7 @@
           {{ item }}
         </li>
       </ul>
+      <main-part/>
     </div>
 
   </div>
@@ -15,6 +16,7 @@
 
 <script>
 import Header from './Header'
+import MainPart from './HomePage/MainPart'
 
 export default {
   name: 'HomePage',
@@ -36,7 +38,8 @@ export default {
     console.log(`items: ${this.items}`)
   },
   components: {
-    Header
+    Header,
+    MainPart
   }
 }
 </script>
