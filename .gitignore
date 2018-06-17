@@ -4,6 +4,7 @@ ehthumbs.db
 ehthumbs_vista.db
 node_modules
 
+
 # Folder config file
 Desktop.ini
 
@@ -15,6 +16,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.xml
 
 # Windows shortcuts
 *.lnk
