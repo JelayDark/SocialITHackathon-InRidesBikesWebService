@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
 const ChatMessages = new mongoose.Schema({
-    messageId: String,
     email: String,
     rideId: String,
     message: String,
