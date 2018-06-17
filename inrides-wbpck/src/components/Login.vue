@@ -105,6 +105,7 @@ export default {
         axios.post('http://localhost:3000/auth/login', str)
           .then((res) => {
             localStorage.setItem('token', res.data.token)
+            this.$router.push('/')
           })
           .catch((e) => {
             console.log(`ERROR: ${e}`)
