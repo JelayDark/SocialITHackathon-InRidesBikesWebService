@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'MainHeader'
 }
 </script>
 
@@ -14,9 +14,12 @@ export default {
 header {
   width: 100%;
   position: relative;
+  -webkit-box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
+  box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
   img {
     margin: 0 auto;
-    position: absolute;
+    height: 60px;
   }
 }
 </style>
