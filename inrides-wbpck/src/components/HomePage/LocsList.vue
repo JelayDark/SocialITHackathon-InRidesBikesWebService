@@ -11,7 +11,7 @@ export default {
   name: 'locs-list',
   data: () => {
     return {
-      items: ['aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf']
+      items: ['aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf']
     }
   },
   methods: {
@@ -31,6 +31,7 @@ export default {
   width: 100%;
   margin: 0;
   padding: 0;
+  height: 490px;
   li {
     display: block;
     margin: 5px;

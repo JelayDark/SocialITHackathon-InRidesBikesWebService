@@ -14,6 +14,7 @@ export default {
 header {
   width: 100%;
   position: relative;
+  background-color: #fff;
   -webkit-box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
   -moz-box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
   box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);

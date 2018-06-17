@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div id="bike-map">
     <div>
@@ -16,7 +17,7 @@
       :center="{lat:50.439178, lng:30.539135}"
       :zoom="7"
       map-type-id="terrain"
-      style="width:100%;  height: 400px;"
+      style="width:100%;  height: 500px; border: 4px solid black;"
     >
       <gmap-marker
         :key="index"
@@ -85,7 +86,7 @@ export default {
 <style lang="scss" scoped>
 .map-wrapper {
   width: 80%;
-  height: 400px;
+  height: 500px;
   margin: 0 auto;
   background-color: red;
 }

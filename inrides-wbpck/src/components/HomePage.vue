@@ -3,7 +3,7 @@
     <div class="top-part">
       <MainHeader/>
     </div>
-    <div class="home-map-block">
+    <div class="home-map-block clearfix">
       <div class="list-wrapper">
         <locs-list/>
       </div>
@@ -57,14 +57,25 @@ export default {
   width: 20%;
   float: left;
   border: 1px solid black;
-  max-height: 200px;
+  max-height: 500px;
   overflow-y: auto;
+  margin-top: 105px;
 }
 
 .main-wrapper {
   width: 70%;
   margin-left: 40px;
   float: left;
+}
+
+.home-map-block {
+
+}
+
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 
