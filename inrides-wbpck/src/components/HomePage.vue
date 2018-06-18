@@ -11,7 +11,6 @@
         <main-part/>
       </div>
     </div>
-
   </div>
 
 </template>
@@ -57,22 +56,25 @@ export default {
 }
 
 .list-wrapper {
+  padding: 0;
+  margin:0;
   width: 20%;
   float: left;
-  border: 1px solid black;
   max-height: 500px;
   overflow-y: auto;
-  margin-top: 105px;
+
 }
 
 .main-wrapper {
-  width: 70%;
-  margin-left: 40px;
-  float: right;
+  padding: 0;
+  margin:0;
+  width: 80%;
+  float: left;
 }
 
 .home-map-block {
-  padding: 40px;
+  padding: 0;
+  margin:0;
 }
 
 .clearfix:after {
