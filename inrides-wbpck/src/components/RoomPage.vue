@@ -41,6 +41,7 @@ export default {
 <style lang="scss" scoped>
 .room-wrapper {
   margin: 40px auto;
+  padding: 40px;
   width: 90%;
   background-color: #fff;
   min-height: 600px;
