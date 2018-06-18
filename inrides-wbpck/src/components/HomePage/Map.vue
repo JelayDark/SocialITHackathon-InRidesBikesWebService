@@ -60,10 +60,7 @@ export default {
       };
   },
   mounted() {
-      // this.geolocate();
-      this.socket.on('newMarker', function () {
-          this.markers.push(data);
-      })
+      this.geolocate()
       this.token = localStorage.getItem('token') || ''
       this.getMarkers();
       this.getMarkersWithInfo();

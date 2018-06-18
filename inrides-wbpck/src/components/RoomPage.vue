@@ -14,7 +14,7 @@
               :center="{lat:50.439178, lng:30.539135}"
               :zoom="12"
               map-type-id="terrain"
-              style="width:100%;  height: 500px;"
+              class="mapa"
       >
         <gmap-marker
                 :key="index"
@@ -25,6 +25,7 @@
                 @click="center=m.position"
         />
       </gmap-map>
+        <chat-window></chat-window>
     </div>
   </div>
 
@@ -71,9 +72,6 @@ export default {
         return myDate.getDate() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getFullYear() + " " + myDate.getHours() + ":" + myDate.getMinutes()
     }
   },
-  mounted: function () {
-    console.log(`catched data: ${this.idl}`)
-  },
   components: {
     MainHeader,
     RoomTitle
@@ -91,5 +89,15 @@ export default {
   -webkit-box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
   -moz-box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
   box-shadow: -13px 10px 46px -8px rgba(0,0,0,0.75);
+}
+.mapa {
+    width:60%;
+    height: 500px;
+    float: right;
+}
+.mapa::after {
+    content: '';
+    display: block;
+    margin-bottom: 15px;
 }
 </style>

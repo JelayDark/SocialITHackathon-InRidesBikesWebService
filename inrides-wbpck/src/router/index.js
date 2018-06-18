@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import HomePage from '@/components/HomePage'
 import RoomPage from '@/components/RoomPage'
+import AddPoint from '@/components/Room/AddPoint'
 
 Vue.use(Router)
 
@@ -24,6 +25,12 @@ export default new Router({
       name: 'Room',
       component: RoomPage,
       props: true
+    },
+    {
+        path: '/add',
+        name: 'AddPoint',
+        component: AddPoint,
+        props: true
     }
   ],
   mode: 'history'

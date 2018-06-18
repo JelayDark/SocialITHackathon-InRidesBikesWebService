@@ -13,7 +13,7 @@
     name: "add-btn",
     methods: {
       goNewRoom () {
-        this.$router.push('/room')
+        this.$router.push('/add')
       }
     }
   }
