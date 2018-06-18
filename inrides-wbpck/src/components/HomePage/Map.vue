@@ -215,13 +215,13 @@ export default {
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-left:30%;
-    padding-top: 90px; /* Location of the box */
+    margin-left:30%;
+    margin-top: 90px; /* Location of the box */
     left: 0;
     top: 0;
     width: 40%; /* Full width */
     height: 18%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    /*overflow: auto; !* Enable scroll if needed *!*/
 }
 
 /* Modal Content */
