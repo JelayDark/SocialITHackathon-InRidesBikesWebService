@@ -1,15 +1,15 @@
 /* eslint-disable */
 <template>
-    <div>
-        <div class="users-list">
-            <ul>
+    <div style="width: 40%;">
+        <div class="users-list" style="float: left; width: 30%;">
+            <ul style="list-style-type: none;">
                 <li >user1</li>
                 <li >GMds</li>
                 <li >Name</li>
             </ul>
         </div>
-        <div class="msg-list">
-            <ul>
+        <div class="msg-list" style="float: right; width: 70%;">
+            <ul style="list-style-type: none;">
                 <li>msg bla</li>
                 <li>gfgh</li>
                 <li>f645 4563</li>
