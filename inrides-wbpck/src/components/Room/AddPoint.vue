@@ -10,6 +10,8 @@
                     @place_changed="setPlace">
                 </gmap-autocomplete>
                 <input name="title" placeholder="Title" v-model="rTitle">
+                <input name="rideDateTime" placeholder="Ride date time YYYY-MM-DD HH:MM" v-model="rideDateTime">
+                <input name="description" placeholder="Description" v-model="description">
                 <button @click="addMarker">Add</button>
             </label>
             <br/>
@@ -53,7 +55,9 @@ export default {
             currentPlace: null,
             socket: io('localhost:3000'),
             token: '',
-            rTitle: ''
+            rTitle: '',
+            rideDateTime: '',
+            description: ''
         };
     },
     mounted() {
@@ -76,7 +80,8 @@ export default {
                 // this.places.push(this.currentPlace)
                 this.center = marker
                 this.currentPlace = null
-                const str = qs.stringify({'startMarkerCoordinateX': marker.lat, 'startMarkerCoordinateY': marker.lng, rideTitle: this.rTitle})
+                const str = qs.stringify({'startMarkerCoordinateX': marker.lat, 'startMarkerCoordinateY': marker.lng,
+                    rideTitle: this.rTitle,  rideDateTime: this.rideDateTime, description: this.description})
                 axios.post('http://localhost:3000/ride/addride', str, {
                     headers: { // sdf
                         Authorization: 'Bearer ' + this.token
