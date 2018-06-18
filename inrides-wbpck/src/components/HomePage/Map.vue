@@ -52,6 +52,7 @@ export default {
           // change this to whatever makes sense
           center: { lat: 45.508, lng: -73.587 },
           markers: [],
+          markersWithInfo: [],
           places: [],
           currentPlace: null,
           socket: io('localhost:3000'),
@@ -64,7 +65,8 @@ export default {
           this.markers.push(data);
       })
       this.token = localStorage.getItem('token') || ''
-      this.getMarkers()
+      this.getMarkers();
+      getMarkersWithInfo();
       this.socket.on('newMarker', (data) => {
           this.markers.push({ position: { lat: parseFloat(data.startMarkerCoordinateX), lng: parseFloat(data.startMarkerCoordinateY) }})
       })
@@ -78,6 +80,26 @@ export default {
     // this.check()
   },
   methods: {
+      getMarkersWithInfo: function() {
+          axios.post('http://localhost:3000/ride/getrides', {
+              headers: { // sdf
+                  Authorization: 'Bearer ' + this.token
+              }
+          })
+              .then((res) => {
+                  for(let marker of res.data) {
+                      this.markersWithInfo.push({
+                          position: { lat: parseFloat(marker.startMarkerCoordinateX), lng: parseFloat(marker.startMarkerCoordinateY)}},
+                          rideTitle: marker.rideTitle,
+                          rideDateTime: marker.rideDateTime
+                          )
+                  }
+              })
+              .catch((e) => {
+                  console.log(`ERROR: ${e}`)
+                  alert('Something went wrong! Please try again!')
+              })
+      },
       getMarkers: function() {
           axios.post('http://localhost:3000/ride/getrides', {
               headers: { // sdf
