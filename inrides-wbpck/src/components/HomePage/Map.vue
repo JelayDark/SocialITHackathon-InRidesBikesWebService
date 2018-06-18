@@ -94,7 +94,8 @@ export default {
                               lng: parseFloat(marker.startMarkerCoordinateY)
                           },
                           rideTitle: marker.rideTitle,
-                          rideDateTime: marker.rideDateTime
+                          rideDateTime: marker.rideDateTime,
+                          id: marker._id
                       })
                   }
               })
