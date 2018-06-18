@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
     height: 100px;
-    background: #fcf3ec;
+    /*background: #fcf3ec;*/
 
   }
 
