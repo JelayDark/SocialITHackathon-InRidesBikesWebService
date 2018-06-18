@@ -41,6 +41,25 @@ io.on('connection', function (socket) {
   socket.on('addMarker', function(data) {
     io.emit('newMarker', data);
   });
+
+    socket.on('room', function(channel) {
+        socket.join(channel);
+        // io.emit('newUser', data);
+    });
+
+    /*let users = [];
+
+    socket.on('subscribe',  (channel) => {
+        socket.join(channel, function (error) {
+            users[socket.id] = channel;
+            console.log('join');
+            socket.send('Join to ' + channel);
+        });
+    });*/
+
+    // now, it's easy to send a message to just the clients in a given room
+    const room = "abc123";
+    io.sockets.in(room).emit('message', 'what is going on, party people?');
 });
 
 /**

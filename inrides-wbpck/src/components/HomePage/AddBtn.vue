@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="wrap-add-btn">
     <button class="button" @click="goNewRoom">

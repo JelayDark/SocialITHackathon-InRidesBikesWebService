@@ -1,5 +1,5 @@
+/* eslint-disable */
 <template>
-
   <div>
     <div class="top-part">
       <MainHeader/>
@@ -25,7 +25,8 @@
                 @click="center=m.position"
         />
       </gmap-map>
-        <chat-window></chat-window>
+        <chat-window :room="idl"></chat-window>
+        <div style="clear: both; margin-bottom: 15px;"></div>
     </div>
   </div>
 
@@ -34,6 +35,7 @@
 <script>
 import MainHeader from './MainHeader'
 import RoomTitle from './Room/RoomTitle'
+import ChatWindow from './Room/ChatWindow'
 
 export default {
   name: "room-page",
@@ -74,7 +76,8 @@ export default {
   },
   components: {
     MainHeader,
-    RoomTitle
+    RoomTitle,
+    ChatWindow
   }
 }
 </script>
