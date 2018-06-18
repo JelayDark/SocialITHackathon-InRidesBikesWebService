@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input class="room-name" type="text" id="room-name" name="room-name" placeholder="Enter room name" v-if="isInput">
-    <h1 class="room-name" v-else>{{titletxt}}</h1>
+    <!--<input class="room-name" type="text" id="room-name" name="room-name" placeholder="Enter room name" v-if="isInput">-->
+    <h1 class="room-name">{{titletxt}}</h1>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   computed: {
     isInput: function () {
       return this.titletxt ? false : true
-    }
+    },
   }
 }
 </script>

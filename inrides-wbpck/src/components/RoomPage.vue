@@ -9,6 +9,22 @@
       <div class="title-wrapper" @click="say">
         <room-title v-bind:titletxt="rideTitle"></room-title>
       </div>
+      <p>Start time: {{this.date()}}</p>
+      <gmap-map
+              :center="{lat:50.439178, lng:30.539135}"
+              :zoom="12"
+              map-type-id="terrain"
+              style="width:100%;  height: 500px;"
+      >
+        <gmap-marker
+                :key="index"
+                v-for="(m, index) in markers"
+                :position="m.position"
+                :clickable="true"
+                :draggable="true"
+                @click="center=m.position"
+        />
+      </gmap-map>
     </div>
   </div>
 
@@ -23,8 +39,23 @@ export default {
   props: ['id'],
   data: function () {
     return {
-      idl: this.id
+      idl: this.id,
+      center: { lat: 45.508, lng: -73.587 },
+      markers: [],
+      markersWithInfo: [],
+      places: [],
+      currentPlace: null,
+      // socket: io('localhost:3000'),
+      token: ''
     }
+  },
+  mounted() {
+      console.log(this.idl)
+      this.markers.push({ position: { lat: parseFloat(this.idl.position.lat), lng: parseFloat(this.idl.position.lng) }})
+      this.center = {
+          lat: parseFloat(this.idl.position.lat),
+          lng: parseFloat(this.idl.position.lang)
+      };
   },
   computed: {
     rideTitle () {
@@ -34,6 +65,10 @@ export default {
   methods: {
     say () {
       console.log('wowowowo', this.idl);
+    },
+    date () {
+        const myDate = new Date(this.idl.rideDateTime);
+        return myDate.getDate() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getFullYear() + " " + myDate.getHours() + ":" + myDate.getMinutes()
     }
   },
   mounted: function () {

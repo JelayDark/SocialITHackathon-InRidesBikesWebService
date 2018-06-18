@@ -24,7 +24,7 @@ export default {
 
       getItems: function() {
           axios.post('http://localhost:3000/ride/getrides', {
-              headers: { // sdf
+              headers: {
                   Authorization: 'Bearer ' + this.token
               }
           })
@@ -49,9 +49,9 @@ export default {
               })
       },
       chooseThis (item) {
-      console.log(`item chosen: ${item}`)
-      this.$router.push({name: 'Room', params: {id: item}})
-    }
+        console.log(`item chosen: ${item}`)
+        this.$router.push({name: 'Room', params: {id: item}})
+      }
   },
   created: () => {
     console.log('check for items')
