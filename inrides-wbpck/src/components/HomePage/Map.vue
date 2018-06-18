@@ -176,20 +176,12 @@ export default {
               };
           });
       },
-      makeBeauty (num) {
-        if (num < 10) {
-            return '0'+num
-        } else {
-            return num
-        }
-      },
       selectMarker: function(m) {
           this.changeCenter = m.position;
           this.changeZoom = 14;
           var modal = document.getElementById('myModal');
           this.modalName = m.rideTitle;
-          const d = new Date(m.rideDateTime);
-          this.modalDate = this.makeBeauty(d.getDate()) + '.' + this.makeBeauty(d.getMonth()) + '.' + this.makeBeauty(d.getFullYear()) + " " + this.makeBeauty(d.getHours()) + ":" + this.makeBeauty(d.getMinutes());
+          this.modalDate = m.rideDateTime;
           this.currentItem = m;
           modal.style.display = "block";
       },
