@@ -58,6 +58,9 @@ export default {
       })
       this.token = localStorage.getItem('token') || ''
       this.getMarkers()
+      this.socket.on('newMarker', (data) => {
+          this.markers.push({ position: { lat: parseFloat(data.startMarkerCoordinateX), lng: parseFloat(data.startMarkerCoordinateY) }})
+      })
   },
   created() {
 
@@ -78,7 +81,6 @@ export default {
                   console.log(res.data[0])
                   for(let marker of res.data) {
                       this.markers.push({ position: { lat: parseFloat(marker.startMarkerCoordinateX), lng: parseFloat(marker.startMarkerCoordinateY) }})
-                      this.places.push(this.currentPlace)
                   }
               })
               .catch((e) => {
@@ -108,6 +110,9 @@ export default {
               })
                   .then((res) => {
                       console.log(`catch response: ${res.data}`)
+                      this.socket.emit('addMarker', {
+                          marker: res.data
+                      })
                   })
                   .catch((e) => {
                       console.log(`ERROR: ${e}`)
