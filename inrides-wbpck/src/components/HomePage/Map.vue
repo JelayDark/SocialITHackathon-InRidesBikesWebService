@@ -89,10 +89,13 @@ export default {
               .then((res) => {
                   for(let marker of res.data) {
                       this.markersWithInfo.push({
-                          position: { lat: parseFloat(marker.startMarkerCoordinateX), lng: parseFloat(marker.startMarkerCoordinateY)}},
+                          position: {
+                              lat: parseFloat(marker.startMarkerCoordinateX),
+                              lng: parseFloat(marker.startMarkerCoordinateY)
+                          },
                           rideTitle: marker.rideTitle,
                           rideDateTime: marker.rideDateTime
-                          )
+                      })
                   }
               })
               .catch((e) => {
