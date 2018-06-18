@@ -39,7 +39,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
-    background-color: #BCA0D7;
+    background-color:  #664a93;
     font-family: 'Lato', sans-serif;
     &:hover {
       background-color: #9D79BC;
