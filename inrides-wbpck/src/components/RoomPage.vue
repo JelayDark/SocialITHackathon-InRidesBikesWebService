@@ -1,11 +1,21 @@
 <template>
 
+  <div>
+    <div class="top-part">
+      <MainHeader/>
+    </div>
+  </div>
+
 </template>
 
 <script>
-    export default {
-        name: "room-page"
-    }
+import MainHeader from './MainHeader'
+export default {
+  name: "room-page",
+  components: {
+    MainHeader
+  }
+}
 </script>
 
 <style scoped>
