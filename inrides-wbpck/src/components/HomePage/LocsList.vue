@@ -50,6 +50,7 @@ export default {
       },
       chooseThis (item) {
       console.log(`item chosen: ${item}`)
+      this.$router.push({name: 'Room', params: {id: item}})
     }
   },
   created: () => {

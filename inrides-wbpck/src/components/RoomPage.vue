@@ -6,7 +6,9 @@
     </div>
 
     <div class="room-wrapper">
-
+      <div class="title-wrapper" @click="say">
+        <room-title v-bind:titletxt="idl"></room-title>
+      </div>
     </div>
   </div>
 
@@ -14,10 +16,24 @@
 
 <script>
 import MainHeader from './MainHeader'
+import RoomTitle from './Room/RoomTitle'
+
 export default {
   name: "room-page",
+  props: ['id'],
+  data: function () {
+    return {
+      idl: this.id
+    }
+  },
+  methods: {
+    say () {
+      console.log('wowowowo', this.idl);
+    }
+  },
   components: {
-    MainHeader
+    MainHeader,
+    RoomTitle
   }
 }
 </script>

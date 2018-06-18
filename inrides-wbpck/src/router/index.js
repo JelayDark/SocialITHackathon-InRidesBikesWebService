@@ -22,7 +22,8 @@ export default new Router({
     {
       path: '/room',
       name: 'Room',
-      component: RoomPage
+      component: RoomPage,
+      props: true
     }
   ],
   mode: 'history'
