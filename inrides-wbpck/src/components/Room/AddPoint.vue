@@ -11,7 +11,7 @@
                     @place_changed="setPlace">
                 </gmap-autocomplete>
                 <input name="title" placeholder="Title" v-model="rTitle">
-                <input name="rideDateTime" placeholder="Ride date time YYYY-MM-DD HH:MM" v-model="rideDateTime">
+                <input name="rideDateTime" placeholder="Date YYYY-MM-DD HH:MM" v-model="rideDateTime">
                 <input name="description" placeholder="Description" v-model="description">
                 <button @click="addMarker">Add</button>
             </label>
