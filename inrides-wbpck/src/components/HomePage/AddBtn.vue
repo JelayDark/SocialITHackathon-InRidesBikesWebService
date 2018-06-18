@@ -1,6 +1,6 @@
 <template>
   <div class="wrap-add-btn">
-    <button class="button">
+    <button class="button" @click="goNewRoom">
       Add venue
       <div class="button__horizontal"></div>
       <div class="button__vertical"></div>
@@ -9,9 +9,14 @@
 </template>
 
 <script>
-    export default {
-        name: "add-btn"
+  export default {
+    name: "add-btn",
+    methods: {
+      goNewRoom () {
+        this.$router.push('/room')
+      }
     }
+  }
 </script>
 
 <style lang="scss" scoped>
