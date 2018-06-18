@@ -32,6 +32,8 @@ export default {
   margin: 0;
   padding: 0;
   height: 490px;
+  padding-bottom: 6px;
+  border-bottom: 3px solid darkgrey;
   li {
     display: block;
     margin-bottom: 1px;
@@ -40,6 +42,7 @@ export default {
     text-overflow: ellipsis;
     text-align: left;
     font-family: 'Lato', sans-serif;
+    border: 1px solid black;
     &:hover {
       background-color: #9D79BC;
       cursor: pointer;

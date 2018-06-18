@@ -20,6 +20,7 @@ export default {
   color: #000;
   background-color: #f6f2fe;
   font-family: "Open Sans", sans-serif;
+  height: 100vh;
   /*background: rgba(102, 74, 147, .5);*/
   /*margin-top: 60px;*/
 }
