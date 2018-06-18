@@ -176,12 +176,20 @@ export default {
               };
           });
       },
+      makeBeauty (num) {
+        if (num < 10) {
+            return '0'+num
+        } else {
+            return num
+        }
+      },
       selectMarker: function(m) {
           this.changeCenter = m.position;
           this.changeZoom = 14;
           var modal = document.getElementById('myModal');
           this.modalName = m.rideTitle;
-          this.modalDate = m.rideDateTime;
+          const d = new Date(m.rideDateTime);
+          this.modalDate = this.makeBeauty(d.getDate()) + '.' + this.makeBeauty(d.getMonth()) + '.' + this.makeBeauty(d.getFullYear()) + " " + this.makeBeauty(d.getHours()) + ":" + this.makeBeauty(d.getMinutes());
           this.currentItem = m;
           modal.style.display = "block";
       },
@@ -207,13 +215,13 @@ export default {
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-left:30%;
-    padding-top: 90px; /* Location of the box */
+    margin-left:30%;
+    margin-top: 90px; /* Location of the box */
     left: 0;
     top: 0;
     width: 40%; /* Full width */
     height: 18%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    /*overflow: auto; !* Enable scroll if needed *!*/
 }
 
 /* Modal Content */
