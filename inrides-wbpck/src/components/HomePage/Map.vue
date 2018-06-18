@@ -51,11 +51,12 @@ export default {
       };
   },
   mounted() {
-      this.geolocate();
+      // this.geolocate();
       this.socket.on('newMarker', function () {
           this.markers.push(data);
-      });
-      this.token = localStorage.getItem('token') || '';
+      })
+      this.token = localStorage.getItem('token') || ''
+      this.getMarkers()
   },
   created() {
 
@@ -67,9 +68,17 @@ export default {
   },
   methods: {
       getMarkers: function() {
-          axios.post('http://localhost:3000/ride/getrides')
+          axios.post('http://localhost:3000/ride/getrides', {
+              headers: { // sdf
+                  Authorization: 'Bearer ' + this.token
+              }
+          })
               .then((res) => {
-                  console.log(`catch response: ${res.data}`)
+                  console.log(res.data[0])
+                  for(let marker of res.data) {
+                      this.markers.push({ position: { lat: parseFloat(marker.startMarkerCoordinateX), lng: parseFloat(marker.startMarkerCoordinateY) }})
+                      this.places.push(this.currentPlace)
+                  }
               })
               .catch((e) => {
                   console.log(`ERROR: ${e}`)
@@ -87,14 +96,13 @@ export default {
                   lng: this.currentPlace.geometry.location.lng()
               }
               this.markers.push({ position: marker })
-              this.places.push(this.currentPlace)
+              // this.places.push(this.currentPlace)
               this.center = marker
               this.currentPlace = null
               const str = qs.stringify({'startMarkerCoordinateX': marker.lat, 'startMarkerCoordinateY': marker.lng})
-              console.log(`ya token: ${this.token}`)
               axios.post('http://localhost:3000/ride/addride', str, {
-                headers: {
-                  Authorization: 'Bearer '+JSON.stringify(this.token)
+                headers: { // sdf
+                  Authorization: 'Bearer ' + this.token
                 }
               })
                   .then((res) => {
