@@ -3,7 +3,7 @@
       <div class="btns-wrapper">
         <a class="btn"><span>Profile</span><em></em></a>
       </div>
-      <img src="../assets/logo.png" alt="logo">
+      <img src="../assets/logo.png" alt="logo" @click="goHome">
     </header>
 </template>
 
@@ -18,6 +18,9 @@ export default {
     }
   },
   methods: {
+    goHome () {
+      this.$router.push('/')
+    }
   },
   created: () => {
     if (!localStorage.getItem('token')) {
@@ -38,6 +41,11 @@ header {
   img {
     margin: 0 auto;
     height: 80px;
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+      transition: all .5s ease-in-out;
+    }
   }
   .btns-wrapper {
     position: relative;

@@ -36,6 +36,9 @@ export default {
       console.log('wowowowo', this.idl);
     }
   },
+  mounted: function () {
+    console.log(`catched data: ${this.idl}`)
+  },
   components: {
     MainHeader,
     RoomTitle
