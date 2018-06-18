@@ -10,6 +10,9 @@
       <div class="main-wrapper">
         <main-part/>
       </div>
+      <div class="add-venue">
+        <add-btn/>
+      </div>
     </div>
   </div>
 
@@ -19,6 +22,7 @@
 import MainHeader from './MainHeader'
 import MainPart from './HomePage/MainPart'
 import LocsList from './HomePage/LocsList'
+import AddBtn from './HomePage/AddBtn'
 
 export default {
   name: 'HomePage',
@@ -27,32 +31,31 @@ export default {
   data: () => {
     return {
       items: ['aa', 'dd', 'ff0', 'ffds', 'dsfdf'],
-      isLogged: false
-
+      token: false
     }
   },
   methods: {
 
   },
   created: () => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      this.isLogged = true
-    } else {
-      this.isLogged = false
-      // window.location.href = '/login';
-    }
+    this.token = localStorage.getItem('token') || false
+    console.log('homepage this.token', this.token);
   },
   components: {
     MainHeader,
     MainPart,
-    LocsList
+    LocsList,
+    AddBtn
   }
 }
 </script>
 
 <style scoped>
 .top-part {
+}
+
+.add-venue {
+  clear: both;
 }
 
 .list-wrapper {

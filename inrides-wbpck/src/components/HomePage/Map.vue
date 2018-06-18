@@ -1,17 +1,17 @@
 /* eslint-disable */
 <template>
   <div id="bike-map">
-    <!--<div>
-      <h2>Search and add a start point</h2>
-      <label>
-        <gmap-autocomplete
-                @place_changed="setPlace">
-        </gmap-autocomplete>
-        <button @click="addMarker">Add</button>
-      </label>
-      <br/>
+    <!--<div>-->
+      <!--<h2>Search and add a start point</h2>-->
+      <!--<label>-->
+        <!--<gmap-autocomplete-->
+                <!--@place_changed="setPlace">-->
+        <!--</gmap-autocomplete>-->
+        <!--<button @click="addMarker">Add</button>-->
+      <!--</label>-->
+      <!--<br/>-->
 
-    </div>!-->
+    <!--</div>-->
 
     <gmap-map
       :center="{lat:50.439178, lng:30.539135}"
@@ -94,7 +94,7 @@ export default {
               console.log(`ya token: ${this.token}`)
               axios.post('http://localhost:3000/ride/addride', str, {
                 headers: {
-                  Authorization: 'Bearer '+JSON.stringify(this.token)
+                  Authorization: 'Bearer '+this.token
                 }
               })
                   .then((res) => {

@@ -1,12 +1,7 @@
 <template>
     <header>
       <div class="btns-wrapper">
-        <button>
-          Sign In
-        </button>
-        <button>
-          Sign Up
-        </button>
+        <a class="btn"><span>Profile</span><em></em></a>
       </div>
       <img src="../assets/logo.png" alt="logo">
     </header>
@@ -15,7 +10,20 @@
 <script>
 
 export default {
-  name: 'MainHeader'
+  name: 'MainHeader',
+  data: () => {
+    return {
+      token: '',
+      needSign: false
+    }
+  },
+  methods: {
+  },
+  created: () => {
+    if (!localStorage.getItem('token')) {
+      window.location.href = '/login';
+    }
+  }
 }
 </script>
 
@@ -30,6 +38,84 @@ header {
   img {
     margin: 0 auto;
     height: 80px;
+  }
+  .btns-wrapper {
+    position: relative;
+  }
+  .btn {
+    cursor: pointer;
+    background-color: #000;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    left: 120px;
+    top: 40px;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.34);
+    span {
+      color: #fff;
+      display: block;
+      padding-left: 35px;
+      text-transform: uppercase;
+      font: bold 18px/50px Arial;
+      transform: scaleX(0.6);
+      letter-spacing: 3px;
+      transform-origin: center left;
+      transition: color 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    em {
+      position: absolute;
+      height: 1px;
+      background: #fff;
+      width: 30%;
+      right: 23px;
+      top: 50%;
+      transform: scaleX(0.25);
+      transform-origin: center right;
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+    &:before, &:after {
+      content: '';
+      background: #fff;
+      height: 50%;
+      width: 0;
+      position: absolute;
+      transition: .3s cubic-bezier(.785,.135,.15,.86);
+    }
+    &:before {
+      top: 0;
+      left: 0;
+      right: auto;
+    }
+    &:after {
+      bottom: 0;
+      right: 0;
+      left: auto;
+    }
+    &:hover {
+      &:before {
+        width: 100%;
+        right: 0;
+        left: auto;
+      }
+      &:after {
+        width: 100%;
+        left: 0;
+        right: auto;
+      }
+      span {
+        color: #000;
+      }
+      em {
+        background: #000;
+        transform: scaleX(1);
+      }
+    }
   }
 }
 </style>
