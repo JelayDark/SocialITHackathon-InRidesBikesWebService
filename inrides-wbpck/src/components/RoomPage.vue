@@ -7,7 +7,7 @@
 
     <div class="room-wrapper">
       <div class="title-wrapper" @click="say">
-        <room-title v-bind:titletxt="idl"></room-title>
+        <room-title v-bind:titletxt="idl.rideTitle"></room-title>
       </div>
     </div>
   </div>
