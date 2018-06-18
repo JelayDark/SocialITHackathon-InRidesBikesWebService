@@ -15,7 +15,7 @@
 
     <gmap-map
       :center="{lat:50.439178, lng:30.539135}"
-      :zoom="7"
+      :zoom="12"
       map-type-id="terrain"
       style="width:100%;  height: 500px;"
     >
@@ -28,6 +28,14 @@
         @click="center=m.position"
       />
     </gmap-map>
+    <!--<h2>Search and add a start point</h2>-->
+    <!--<label>-->
+      <!--<gmap-autocomplete-->
+              <!--@place_changed="setPlace">-->
+      <!--</gmap-autocomplete>-->
+      <!--<button @click="addMarker">Add</button>-->
+    <!--</label>-->
+
   </div>
 </template>
 
@@ -51,11 +59,15 @@ export default {
       };
   },
   mounted() {
-      this.geolocate();
+      // this.geolocate();
       this.socket.on('newMarker', function () {
           this.markers.push(data);
-      });
-      this.token = localStorage.getItem('token') || '';
+      })
+      this.token = localStorage.getItem('token') || ''
+      this.getMarkers()
+      this.socket.on('newMarker', (data) => {
+          this.markers.push({ position: { lat: parseFloat(data.startMarkerCoordinateX), lng: parseFloat(data.startMarkerCoordinateY) }})
+      })
   },
   created() {
 
@@ -67,9 +79,16 @@ export default {
   },
   methods: {
       getMarkers: function() {
-          axios.post('http://localhost:3000/ride/getrides')
+          axios.post('http://localhost:3000/ride/getrides', {
+              headers: { // sdf
+                  Authorization: 'Bearer ' + this.token
+              }
+          })
               .then((res) => {
-                  console.log(`catch response: ${res.data}`)
+                  console.log(res.data[0])
+                  for(let marker of res.data) {
+                      this.markers.push({ position: { lat: parseFloat(marker.startMarkerCoordinateX), lng: parseFloat(marker.startMarkerCoordinateY) }})
+                  }
               })
               .catch((e) => {
                   console.log(`ERROR: ${e}`)
@@ -87,18 +106,20 @@ export default {
                   lng: this.currentPlace.geometry.location.lng()
               }
               this.markers.push({ position: marker })
-              this.places.push(this.currentPlace)
+              // this.places.push(this.currentPlace)
               this.center = marker
               this.currentPlace = null
               const str = qs.stringify({'startMarkerCoordinateX': marker.lat, 'startMarkerCoordinateY': marker.lng})
-              console.log(`ya token: ${this.token}`)
               axios.post('http://localhost:3000/ride/addride', str, {
-                headers: {
-                  Authorization: 'Bearer '+this.token
+                headers: { // sdf
+                  Authorization: 'Bearer ' + this.token
                 }
               })
                   .then((res) => {
                       console.log(`catch response: ${res.data}`)
+                      this.socket.emit('addMarker', {
+                          marker: res.data
+                      })
                   })
                   .catch((e) => {
                       console.log(`ERROR: ${e}`)
