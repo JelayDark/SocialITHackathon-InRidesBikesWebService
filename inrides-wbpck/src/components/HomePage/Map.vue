@@ -2,20 +2,13 @@
 <template>
   <div id="bike-map">
     <!--<div>
-      <h2>Search and add a start point</h2>
-      <label>
-        <gmap-autocomplete
-                @place_changed="setPlace">
-        </gmap-autocomplete>
-        <button @click="addMarker">Add</button>
-      </label>
       <br/>
 
     </div>!-->
 
     <gmap-map
       :center="{lat:50.439178, lng:30.539135}"
-      :zoom="7"
+      :zoom="12"
       map-type-id="terrain"
       style="width:100%;  height: 500px;"
     >
@@ -28,6 +21,14 @@
         @click="center=m.position"
       />
     </gmap-map>
+    <h2>Search and add a start point</h2>
+    <label>
+      <gmap-autocomplete
+              @place_changed="setPlace">
+      </gmap-autocomplete>
+      <button @click="addMarker">Add</button>
+    </label>
+
   </div>
 </template>
 
