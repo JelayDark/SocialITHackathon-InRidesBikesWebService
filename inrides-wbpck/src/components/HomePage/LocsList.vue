@@ -37,7 +37,8 @@ export default {
                           },
                           rideTitle: marker.rideTitle,
                           rideDateTime: marker.rideDateTime,
-                          id: marker._id
+                          id: marker._id,
+                          description: marker.description
                       })
                   }
 

@@ -1,7 +1,7 @@
 <template>
     <header>
       <div class="btns-wrapper">
-        <a class="btn"><span>Profile</span><em></em></a>
+        <a class="btn" @click="goProfile"><span>Profile</span><em></em></a>
       </div>
       <img src="../assets/logo.png" alt="logo" @click="goHome">
     </header>
@@ -20,6 +20,10 @@ export default {
   methods: {
     goHome () {
       this.$router.push('/')
+    },
+
+    goProfile () {
+      this.$router.push('/profile')
     }
   },
   created: () => {
