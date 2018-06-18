@@ -7,7 +7,7 @@
 
     <div class="room-wrapper">
       <div class="title-wrapper" @click="say">
-        <room-title v-bind:titletxt="idl.rideTitle"></room-title>
+        <room-title v-bind:titletxt="rideTitle"></room-title>
       </div>
     </div>
   </div>
@@ -24,6 +24,11 @@ export default {
   data: function () {
     return {
       idl: this.id
+    }
+  },
+  computed: {
+    rideTitle () {
+      return this.idl ? this.idl.rideTitle : false
     }
   },
   methods: {
