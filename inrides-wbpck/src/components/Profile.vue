@@ -34,7 +34,7 @@
       </div>
       <div>
         <label for="yes">
-          <span class="lbl-fld">Have you own bicycle?</span>
+          <span class="lbl-fld">Have your own bicycle?</span>
           <label for="yes">
             <input type="checkbox" id="yes" name="with-by" v-model="uhaveTrue" @click="checkCheckbox(true)">
             YES
