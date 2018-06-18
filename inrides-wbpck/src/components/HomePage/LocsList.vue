@@ -1,21 +1,54 @@
 <template>
   <ul class="list-of-points">
     <li v-for="item in items" @click="chooseThis(item)">
-      {{ item }}
+      {{ item.rideTitle }}
     </li>
   </ul>
 </template>
 
 <script>
+import axios from 'axios'
+import qs from 'qs'
+
 export default {
   name: 'locs-list',
   data: () => {
     return {
-      items: ['aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf', 'aa', 'dd', 'ff0', 'ffds', 'dsfdf']
+      items: []
     }
-  },
+  },mounted() {
+        this.getItems();
+        console.log(this.items);
+    },
   methods: {
-    chooseThis (item) {
+
+      getItems: function() {
+          axios.post('http://localhost:3000/ride/getrides', {
+              headers: { // sdf
+                  Authorization: 'Bearer ' + this.token
+              }
+          })
+              .then((res) => {
+                  for(let marker of res.data) {
+                      this.items.push({
+                          position: {
+                              lat: parseFloat(marker.startMarkerCoordinateX),
+                              lng: parseFloat(marker.startMarkerCoordinateY)
+                          },
+                          rideTitle: marker.rideTitle,
+                          rideDateTime: marker.rideDateTime,
+                          id: marker._id
+                      })
+                  }
+
+
+              })
+              .catch((e) => {
+                  console.log(`ERROR: ${e}`)
+                  alert('Something went wrong! Please try again!')
+              })
+      },
+      chooseThis (item) {
       console.log(`item chosen: ${item}`)
     }
   },
@@ -41,10 +74,10 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
+    background-color: #CCCCCC;
     font-family: 'Lato', sans-serif;
-    border: 1px solid black;
     &:hover {
-      background-color: #9D79BC;
+      background-color: #664a93;
       cursor: pointer;
     }
   }
