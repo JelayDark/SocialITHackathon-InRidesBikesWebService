@@ -66,7 +66,7 @@ export default {
       })
       this.token = localStorage.getItem('token') || ''
       this.getMarkers();
-      getMarkersWithInfo();
+      this.getMarkersWithInfo();
       this.socket.on('newMarker', (data) => {
           this.markers.push({ position: { lat: parseFloat(data.startMarkerCoordinateX), lng: parseFloat(data.startMarkerCoordinateY) }})
       })
