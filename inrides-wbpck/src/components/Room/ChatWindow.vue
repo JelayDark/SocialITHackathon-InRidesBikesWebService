@@ -1,21 +1,22 @@
 /* eslint-disable */
 <template>
-    <div style="width: 40%;">
-        <div class="users-list" style="float: left; width: 30%;">
+    <div style="width: 40%; height: 500px;">
+        <!--<div class="users-list" style="float: left; width: 30%; height: 500px;">
             <ul style="list-style-type: none;">
                 <li >user1</li>
                 <li >GMds</li>
                 <li >Name</li>
             </ul>
         </div>
-        <div class="msg-list" style="float: right; width: 70%;">
+        <div class="msg-list" style="float: right; width: 70%; height: 500px; background-color: rgba(156,148,143,0.26)">
             <ul style="list-style-type: none;">
                 <li>msg bla</li>
                 <li>gfgh</li>
-                <li>f645 4563</li>
+                <li>YA CHAT I YA V PROETKE</li>
             </ul>
         </div>
-        <textarea class="msg-input"></textarea>
+        <textarea class="msg-input" PLACEHOLDER="msg" ></textarea>-->
+        <img src="../../assets/chat.png" style="width: 100%; height: 100%;">
     </div>
 </template>
 
